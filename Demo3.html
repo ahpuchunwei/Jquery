@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>弹出框效果</title>
+</head>
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/jquery.easydrag.handler.beta2.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		
+		$('.one').click(function(){
+			$('.box').show();
+		});
+		
+		
+		$('span').click(function(){
+			$('.box').hide();
+		});
+		
+		$('.box_all').easydrag();
+		
+	
+	});
+
+	
+</script>
+<style type="text/css">
+*{padding:0; margin:0}
+body{font-size:12px;padding:100px}
+.box_all { float:left; padding:5px; background:#eee; position:absolute; top:30%; left:30%;}
+.box{
+	display:none;
+	width:400px;
+	height:300px;
+	border:1px solid #4c7ebd;
+}
+.box h1{
+	height:30px;
+	color:#FFF;
+	line-height:30px;
+	font-size:14px;
+	background:#87b0e1;
+	padding-left:10px;
+}
+.box span{
+	float:right;
+	cursor:pointer;
+}
+
+
+.box p{
+	padding:10px;
+}
+
+
+
+</style>
+
+<body>
+<a href="#" class="one">测试弹出框</a>
+<div class="box_all">
+<div class="box">
+	<h1><span><a href="#">关闭</a></span> 这是标题</h1> <br>
+	<p>这是内容</p>
+</div>
+</div>
+</body>
+</html>

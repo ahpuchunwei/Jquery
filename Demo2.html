@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>
+		在页面加载完成后弹出对话框
+	</title>
+</head>
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$('a').click(function(){
+			alert("弹出的内容");
+		});
+		
+		$('.text').click(function(){
+			alert("这是文本框里面");
+			$('input:checkbox').checked;
+		});
+		
+		$('input:checkbox').click(function(){
+			alert("这是checkbox");
+		});
+		
+		$('div:odd').click(function(){
+			alert("这里是div");
+		});
+	})
+</script>
+<body>
+<a href="#">点击弹出</a>
+<input type="text" class="text"/>
+<input type="checkbox"/>
+<div class="hdw" style="width:100px; height:100px; background:#ccc; border:1px solid #000;"></div>
+<div style="width:100px; height:100px; background:#ccc;"></div>
+<div style="width:100px; height:100px; background:#ccc;border:1px solid #000;"></div>
+<div style="width:100px; height:100px; background:#ccc;"></div>
+<div style="width:100px; height:100px; background:#ccc;border:1px solid #000;"></div>
+</body>
+</html>

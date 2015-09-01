@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>表单验证</title>
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(e) {
+		
+	   $('.a1').each(function(index, element) {
+          $(this).parent().append("<strong class='reda'>*</strong>");
+       });
+	   
+	
+	   $('form :input').blur(function(){
+		  $(this).parent().find('.a2').remove();
+		  
+		  if($(this).is('#username')){  
+	
+		  	var att1 = $("<span class='a2'>用户名不得小于6位</span>");
+		  	var att2 = $("<span class='a2'>正确</span>");
+		  
+		  	if($(this).val()==""||$(this).val().length<6){
+		  		$(this).parent().append(att1);
+		  	}else{
+				$(this).parent().append(att2);
+			}
+		  
+		  }
+		  
+		  if($(this).is('#password')){
+			 var att1 = $("<span class='a2'>密码不能为空</span>");
+			 var att2 = $("<span class='a2'>正确</span>");
+			 if($(this).val()==""){
+			 	$(this).parent().append(att1);
+			 }else{
+			 	$(this).parent().append(att2);
+			 }
+		  }
+		  
+		  //判断		
+		  if ($(this).is("#passwords")){
+				
+				if (this.value=="" || this.value!= $("#password").val()){
+					
+					var att1 = $("<span class='a2 error'>两次密码不一样</span>");
+					
+					$(this).parent().append(att1);
+					
+					}else{
+						
+					var att2 = $("<span class='a2 righta'>正确</span>");
+					
+					$(this).parent().append(att2);				
+				}
+
+		  }
+		  //end
+		  
+		  if($(this).is("#tel")){
+		  	var att1 = $("<span class='a2'>手机号不能为空，且必须为11位</span>");
+			var att2 = $("<span class='a2'>正确</span>");
+			if (this.value=="" || isNaN($(this).val()) || this.value.length < 11 ){
+					
+				$(this).parent().append(att1);
+					
+			}else{
+				$(this).parent().append(att2);				
+			}
+		  }
+		  
+		  //判断		
+			if ($(this).is("#email")){
+				
+				if (this.value=="" || ( this.value!="" && 
+				!/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value) )){
+					
+					var att1 = $("<span class='a2 error'>邮件的格式不正确</span>");
+					
+					$(this).parent().append(att1);
+					
+					}else{
+						
+					var att2 = $("<span class='a2 righta'>正确</span>");
+					
+					$(this).parent().append(att2);				
+				}
+
+			}
+			//end	
+		
+		//提交
+		$("#send").click(function(){
+			
+			$("form :input").trigger("blur");
+			
+			var att1 = $(".error").length; 
+			
+			if (att1){
+				
+				return false;
+				
+				}
+			
+			alert("注册成功");	
+	
+		});
+		//end
+	
+	
+	
+		//重置
+		$("#res").click(function(){
+			
+			$(".a2").remove();
+
+		});
+		//end
+		
+		  	
+	   });
+	   
+    });
+</script>
+<style>
+
+*{
+	margin:0;
+	padding:0;
+}
+body { font-size:12px; padding:100px;}
+.one { margin:10px 0;}
+.one label { width:100px; float:left; text-align:right; height:20px; line-height:20px;}
+.one input { border:1px solid #ccc; height:20px;}
+.two { padding-left:100px;}
+.reda { color:red;}
+
+</style>
+</head>
+<body>
+<form method="post" action="#">
+<div class="one">
+	<label for="username">用户名：</label>
+	<input type="text" id="username" class="a1"/>
+</div>
+
+<div class="one">
+	<label for="password">密码：</label>
+	<input type="password" id="password" class="a1"/>
+</div>
+
+<div class="one">
+	<label for="password">重复密码：</label>
+    <input type="password" id="passwords" class="a1"/>
+</div>
+
+<div class="one">
+	<label>电话：</label>
+    <input type="text" id="tel" class="a1"/>
+</div>
+
+<div class="one">
+	<label>电子邮箱：</label>
+    <input type="text" id="email" class="a1" />
+</div>
+
+<div class="two">
+	<input type="submit" id="send" value="提交" />
+    <input type="reset" id="res" value="重置"/>
+</div>
+
+</form>
+
+</body>
+</html>
